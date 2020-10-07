@@ -3,6 +3,8 @@ const connection = require("../../connection");
 
 const orm = selectAll + insertOne + updateOne + deleteOne;
 
+orm();
+
 function selectAll() {
     connection.query("SELECT * FROM burgers", function(err, res) {
         if (err) throw err;

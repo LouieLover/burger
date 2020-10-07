@@ -1,19 +1,14 @@
 $(function() {
-    $(".change-form").on("submit", function(event) {
+    $(".create-form").on("submit", function(event) {
         event.preventDefault();
-        var newBurger = $(newBurger).data("id");
-        //   var newSleep = $(this).data("newsleep");
 
-        //   var newSleepState = {
-        //     sleepy: newSleep
-        //   };
         var newBurger = {
-            burger_name: $("#newBurger")
+            burger_name: $("#burger")
                 .val().trim(),
             devoured: 0
         };
-        // Send the PUT request.
-        $.ajax("/api/burger/" + id, {
+        // Send the POST request.
+        $.ajax("/api/burgers/", {
             type: "POST",
             data: newBurger
         }).then(
@@ -25,17 +20,17 @@ $(function() {
         );
     });
 
-    $(".eatburger").on("submit", function(event) {
+    $(".change-burger").on("click", function(event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
-
+        var newdevoured = $(this).data("newdevoured");
         const id = $(this).data("id");
         const devoured = {
-            devoured: 1
+            devoured: newdevoured
         };
-        // Send the POST request.
-        $.ajax("/api/burger/" + id, {
-            type: "POST",
+        // Send the PUT request.
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
             data: devoured
         }).then(
             function() {
@@ -45,4 +40,25 @@ $(function() {
             }
         );
     });
+
+    $(".delete-burger").on("click", function(event) {
+        // Make sure to preventDefault on a submit event.
+        const id = $(this).data("id");
+        // Send the PUT request.
+        $.ajax("/api/burgers/" + id, {
+            type: "DELETE",
+
+        }).then(
+            function() {
+                console.log("Burger deleted");
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    });
 });
+
+
+
+
+module.exports = burgers;

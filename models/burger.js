@@ -1,8 +1,8 @@
 const orm = require("../../orm");
 
-const burger = selectAll + insertOne + updateOne + deleteOne;
+const burgers = selectAll + insertOne + updateOne + deleteOne;
 
-burger();
+burgers();
 
 function selectAll() {
     connection.query("SELECT * FROM burgers", function(err, res) {
@@ -36,4 +36,4 @@ function deleteOne() {
 
 
 
-modules.export = orm.js;
+modules.export = burger.js;

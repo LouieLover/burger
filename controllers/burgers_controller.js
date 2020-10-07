@@ -1,6 +1,6 @@
 const express = require("express");
-const burgers = require("burgers");
 const router = express.Router();
+
 
 router.get("/", function(req, res) {
     burgers.selectAll(function(data) {

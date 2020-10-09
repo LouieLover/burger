@@ -4,7 +4,6 @@ const router = express.Router();
 
 const burgers = require("../models/burgers");
 
-// burgers();
 
 router.get("/", function(req, res) {
     burgers.all(function(data) {

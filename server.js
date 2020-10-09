@@ -23,6 +23,6 @@ app.use(router);
 
 
 
-app.listen(PORT, function() {
-    console.log("Server listening on: http:/localhost:" + PORT);
+app.listen(process.env.PORT || 3300, function() {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
